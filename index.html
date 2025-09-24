@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신선출고</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('6.jpg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            position: relative;
+        }
+        
+        .date-number {
+            font-family: Arial, sans-serif;
+            font-size: 100px;  /* 90px에서 85px로 살짝 줄임 */
+            font-weight: bold;
+            color: #FFEDC0;
+            text-shadow: 0 0 20px rgba(255, 237, 192, 0.8);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 237, 192, 0.5); }
+            to { text-shadow: 0 0 30px rgba(255, 237, 192, 1); }
+        }
+        
+        .month {
+            position: absolute;
+            top: 53%;
+            left: 44%;  /* 훨씬 더 안쪽으로 */
+            transform: translate(-50%, -50%);
+        }
+        
+        .day {
+            position: absolute;
+            top: 53%;
+            left: 54.5%;  /* 훨씬 더 안쪽으로 */
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="month">
+        <span class="date-number" id="month">09</span>
+    </div>
+    
+    <div class="day">
+        <span class="date-number" id="day">04</span>
+    </div>
+
+    <script>
+        function updateDate() {
+            const now = new Date();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            
+            document.getElementById('month').textContent = month;
+            document.getElementById('day').textContent = day;
+        }
+        
+        updateDate();
+        setInterval(updateDate, 60000);
+    </script>
+</body>
+</html>
