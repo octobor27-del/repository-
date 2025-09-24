@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신선출고</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             margin: 0;
             padding: 0;
@@ -16,15 +22,19 @@
             background-repeat: no-repeat;
             background-color: transparent;
             position: relative;
+            font-family: Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .date-number {
             font-family: Arial, sans-serif;
-            font-size: 100px;  /* 90px에서 85px로 살짝 줄임 */
+            font-size: 5.5vw;  /* vw 단위로 변경 - 화면 크기에 비례 */
             font-weight: bold;
             color: #FFEDC0;
             text-shadow: 0 0 20px rgba(255, 237, 192, 0.8);
             animation: glow 2s ease-in-out infinite alternate;
+            line-height: 1;
         }
         
         @keyframes glow {
@@ -34,16 +44,29 @@
         
         .month {
             position: absolute;
-            top: 53%;
-            left: 44%;  /* 훨씬 더 안쪽으로 */
+            top: 52%;
+            left: 40%;  /* 더 왼쪽으로 */
             transform: translate(-50%, -50%);
         }
         
         .day {
             position: absolute;
-            top: 53%;
-            left: 54.5%;  /* 훨씬 더 안쪽으로 */
+            top: 52%;
+            left: 57%;  /* 더 왼쪽으로 이동 */
             transform: translate(-50%, -50%);
+        }
+        
+        /* 브라우저별 호환성 */
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+            .date-number {
+                font-size: 85px;  /* 웹킷 브라우저용 고정 크기 */
+            }
+        }
+        
+        @-moz-document url-prefix() {
+            .date-number {
+                font-size: 85px;  /* 파이어폭스용 고정 크기 */
+            }
         }
     </style>
 </head>
